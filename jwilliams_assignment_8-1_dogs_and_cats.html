@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment 8-1: Dogs and Cats</title>
+     <link href="https://fonts.googleapis.com/css?family=Shanti" rel="stylesheet">
+    <style>
+      body {
+        background-color: #1D1F21;
+        color: #D1D1D2;
+        font-family: 'Shanti', sans-serif;
+        margin-left: 5%;
+        width: 800px;
+      }
+      .redtext {
+        color: coral;
+      }
+      th, td {
+        border: white solid 1px;
+        padding: 10px;
+        width: 600px;
+        margin: 10px;
+      }
+      table {
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <h1>Assignment 8-1: Dogs and Cats</h1>
+    <p>Create two constructor functions, one for dogs and one for cats. <br>
+    Create several dog and cat objects using the constructor functions.<br>
+    Make sure the dogs can bark and the cats can meow.<br>
+    Create a mouse (or some other kind of animal) by using an object literal.<br>
+    Add all the animals you've created to an array,  animals.<br>
+    Write a function, checkKindOfPet, that takes an array of animals. The function iterates through all the animals and checks to see if the animal is a dog, a cat, or something else.<br>
+    If the animal is a dog, display that information along with the name of the dog, and also make the dog bark.<br>
+    Likewise, if the animal is a cat, display that information along with the name of the cat, and also make the cat meow.<br>
+    Otherwise, display the name of the animal, and indicate you don't know what kind of animal it is.<br>
+    Test your code thoroughly!<br>
+    Comment your code, and add your name in the comments at the top. Include all your code (HTML, JavaScript) in one file.</p>
+
+    <hr>
+    
+    <table>
+      <tr>
+        <th>Cat</th>
+        <th>Dog</th>
+        <th>Other</th>
+      </tr>
+      <tr>
+        <td id="0"></td>
+        <td id="3"></td>
+        <td id="6"></td>
+      </tr>
+      <tr>
+        <td id="1"></td>
+        <td id="4"></td>
+        <td id="7"></td>
+      </tr>
+      <tr>
+        <td id="2"></td>
+        <td id="5"></td>
+        <td id="8"></td>
+      </tr>
+    
+    </table>
+
+    <script>
+      //********************************************
+      //**  Code Author: Joan Williams
+      //**  Date: 12/06/16
+      //********************************************
+      
+      //**  Cat Constructor
+      function MakeCat(name, breed, weight, age, owner, likesYarn, eatsFish) {
+        this.name = name;
+        this.weight = weight;
+        this.age = age;
+        this.owner = owner;
+        this.likesYarn = likesYarn;
+        this.eatsFish = eatsFish;
+        this.meow = function() {
+          if (this.weight > 10) {
+            return " MEEOW.";
+          } else {
+            return " Meeoooow";  
+          }
+        }
+      }
+      
+      //**  Dog Constructor
+      function MakeDog(name, breed, weight, age, owner, likesBalls, eatsChicken) {
+        this.name = name;
+        this.weight = weight;
+        this.age = age;
+        this.owner = owner;
+        this.likesBalls = likesBalls;
+        this.eatsChicken = eatsChicken;
+        this.bark = function() {
+          if (this.weight > 10) {
+            return " WOOF.";
+          } else {
+            return " Ruff ruff ruff.";  
+          }
+        }
+      }
+      
+      //**  Making 3 Cats
+      var silky = new MakeCat("Silky", "Siamese", 12, 3, "Jenny Packett", true, false);
+      var chandry = new MakeCat("Chandry", "Tabby", 8, 4, "Julie Borgman", false, true);
+      var dottie = new MakeCat("Dottie", "Fluffy White Cat", 7, 1,"Denise Delware", false, false);
+      
+      //**  Making 3 Dogs
+      var spot = new MakeDog("Spot", "Doberman", 42, 5,  "Daiz Martin", true, false);
+      var harbinger = new MakeDog("Harbinger", "Spitz", 26, 1, "Denny Maken", false, true);
+      var dolly = new MakeDog("Dolly", "Mini Poodle", 7, 2, "Maddie Smith", true, true);
+      
+      //**  Making a Mouse
+      var aMouse = {
+        name: "Mr. Mousey",
+        color: "dark gray",
+        weight: 1,
+        eatCheese: function() {
+          this.weight = this.weight + 1;
+        }
+      }
+      
+      //**  Array of Animals
+      var animalArray = [];
+      animalArray.push(silky, chandry, dottie, spot, harbinger, dolly, aMouse);
+      console.log(animalArray);
+      
+      //**  Checking Kind of Pet - that takes an array of animals. The function iterates through all the animals and checks to see if the animal is a dog, cat or something else.
+      function checkKindOfPet(petArray) {
+        for (var i = 0; i < petArray.length; i = i +1) {
+          if (petArray[i] instanceof MakeCat) {  //**  If it's a cat...display the name of the cat and make the cat meow
+              document.getElementById(i).innerHTML = "Cat: " + petArray[i].name +  " -" + petArray[i].meow();
+          } else if (petArray[i] instanceof MakeDog) {  //**  If it's a dog...display the name of the dog and make the dog bark
+              document.getElementById(i).innerHTML = "Dog: " + petArray[i].name + " -" + petArray[i].bark();
+          } else {  //**  Otherwise, display the name of the animal and indicate that you don't know what kind of animal it is.
+              document.getElementById(i).innerHTML = "Unknown Animal: " + petArray[i].name;
+          }
+        }
+      }
+      
+      checkKindOfPet(animalArray);
+      
+      if (spot instanceof MakeDog) {
+        console.log(spot.bark());
+      };
+      
+      
+    </script>
+    
+  </body>
+</html>

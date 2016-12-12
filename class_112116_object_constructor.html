@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>class</title>
+    <style>
+      body {
+        background-color: #1D1F21;
+        color: #D1D1D2;
+        margin-left: 5%;
+        width: 800px;
+      }
+      .redtext {
+        color: coral;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    
+    <h1>Class</h1>
+    <p>class</p>
+    <p id="employee"></p>
+    <p id="coffee"></p>
+    <hr>
+
+    <script>
+      //********************************************
+      //**  Code Author: Joan Williams
+      //**  Date: 11/21/16
+      //********************************************
+      
+      //**  Create a Cat constructor for these objects
+      
+      function Cat(name, weight, breed, likesYarn) {
+        this.name = name;
+        this.weight = weight;
+        this.breed = breed;
+        this.likesYarn = likesYarn;
+      }
+      
+      var Bjorni = new Cat("Bjorni", 30, "Mixed", true);
+      
+      document.write(Bjorni.name + ", ");
+      document.write(Bjorni.weight + ", ");
+      document.write(Bjorni.breed + ", ");
+      document.write(Bjorni.likesYarn + ".");
+      
+      var Goonie = new Cat("Goonie", 2, "Siamese", false);
+      
+      document.write(Goonie.name + ", ");
+      document.write(Goonie.weight + ", ");
+      document.write(Goonie.breed + ", ");
+      document.write(Goonie.likesYarn + ".");
+      
+      //**  Create a constructor for these objects:
+      
+      //**  A Car
+      function Car(name, horsepower, year) {
+        this.name = name;
+        this.horsepower = horsepower;
+        this.year = year;
+        this.drive = function() {
+          if (this.horsepower > 100) {
+            console.log(this.name + " " + this.year + " " + "goes ZOOOOOM.");
+          } else {
+            console.log(this.name + " " + this.year + " " + "goes Vroom vroom.");
+          }
+        }
+      }
+      
+      var Legacy = new Car("Legacy", 120, 1984);
+      console.log(Legacy);
+      Legacy.drive();
+      
+      var Norwal = new Car("Norwal", 80, 2001);
+      console.log(Norwal);
+      Norwal.drive();
+      
+      //**  An Employee
+      function Employee(name, title, paygrade) {
+        this.name = name;
+        this.title = title;
+        this.paygrade = paygrade;
+        this.display = function() {
+          document.getElementById("employee").innerHTML = this.name + ", " + this.title + ", " + this.paygrade;
+        }
+      }
+      
+      var Alice = new Employee("Alice", "Customer Serivce", 1);
+      Alice.display();
+      
+      //**  A Coffee Drink
+      function Coffee(name) {
+        this.name = name;
+        this.getSize = function(size) {
+            document.getElementById("coffee").innerHTML = this.name + ", is a great " + size + " coffee.";
+        }
+      }
+      
+      var Cappoconi = new Coffee("Cappoconi");
+      Cappoconi.getSize("large");
+      
+      
+      
+      
+    </script>
+    
+  </body>
+</html>

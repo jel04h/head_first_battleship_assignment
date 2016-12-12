@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html id="body">
+  <head>
+    
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+
+  <p id="coords"></p>
+    
+  <button>Click this </button>
+
+  <div id="greenBox" onmousedown="" onmouseup="" onmousemove="" onclick="" style="width:80px;height:80px;background-color:green;position:absolute;cursor:move;"></div>
+
+
+
+  <script>
+    window.onload = init;
+    
+    //he tracked all the events in here and assigned each to a function
+    function init() {
+      var body = document.getElementById("body");
+      body.onmousemove = getCoordinates;
+      var box = document.getElementById("greenBox");
+      box.onmousedown = moveBox;
+    }
+    
+    function getCoordinates(eventObj) {
+      var coords = document.getElementById("coords");
+      var x = eventObj.clientX;
+      var y = eventObj.clientY;
+      coords.innerHTML = "Map coordinates: " + x + ", " + y;
+    }
+    
+    function moveBox(eventObj) {
+      var xMouse = eventObj.clientX;
+      var yMouse = eventObj.clientY;
+      var boxSize = 80;
+      
+      document.getElementById("greenBox").style.top = yMouse - 30 + "px";
+      document.getElementById("greenBox").style.left = xMouse - 30 + "px";
+      
+    }
+    
+    //he made a true or false if it's over the box or not and true or false when it's clicked or not
+    //true or false, can it move or not
+    
+  </script>  
+
+  </body>
+</html>
